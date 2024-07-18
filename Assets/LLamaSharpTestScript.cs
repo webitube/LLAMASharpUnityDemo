@@ -27,11 +27,15 @@ public class LLamaSharpTestScript : MonoBehaviour
     private string _submittedText = "";
     private CancellationTokenSource _cts;
 
-    async UniTaskVoid Start()
+    private const string DEFAULT_INPUT_TEXT = "What is the capitol of California?";
+
+
+	async UniTaskVoid Start()
     {
-        _cts = new CancellationTokenSource();
+		_cts = new CancellationTokenSource();
         SetInteractable(false);
-        Submit.onClick.AddListener(() =>
+		Input.text = DEFAULT_INPUT_TEXT;
+		Submit.onClick.AddListener(() =>
         {
             _submittedText = Input.text;
             Input.text = "";
